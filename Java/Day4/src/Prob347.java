@@ -45,9 +45,13 @@ public class Prob347 {
             freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
         }
 
+        System.out.println(freqMap);
+
         PriorityQueue<Map.Entry<Integer, Integer>> minHeap = new PriorityQueue<>(
-                (a, b) -> a.getValue() - b.getValue()
+                Comparator.comparingInt(Map.Entry::getValue)
         );
+
+        //System.out.println(minHeap);
 
         for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
             minHeap.add(entry);
@@ -55,6 +59,8 @@ public class Prob347 {
                 minHeap.poll();
             }
         }
+
+        System.out.println(minHeap);
 
         int[] res = new int[k];
         for (int i = 0; i < res.length; i++) {
